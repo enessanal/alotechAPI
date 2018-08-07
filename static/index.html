@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Kayıt Sorgula</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>  
+	<link rel="stylesheet" href="./static/css/style.css"/>
+	<link rel="shortcut icon" href="./static/content/favicon.ico" type="image/x-icon"/>
+	<script src="./static/js/script.js"></script>
+  </head>
+<body>
+
+<div class="container">
+
+  <h2>Sorgulama Sayfası</h2>
+  <form class="form-horizontal" action="localhost:8000/api" id="myform">
+  
+	<br>
+	 <div class="form-group">
+        <label class="control-label  col-sm-2" for="startDate">Başlangıç Tarihi</label>
+		 <div class="col-sm-2">   
+		 <input class="form-control" id="start_date" name="startDate" required autocomplete="off" placeholder="YYYY-MM-DD" type="text"/>
+		</div>
+    </div>
+	 <div class="form-group">
+        <label class="control-label  col-sm-2" for="endDate">Bitiş Tarihi</label>
+		 <div class="col-sm-2">   
+		 <input class="form-control" id="end_date" name="endDate" required autocomplete="off" placeholder="YYYY-MM-DD" type="text"/>
+		</div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Sorgula</button>
+		<img class="loader" src="./static/content/ajax-loader.gif" hidden width="20px" height="20px" style="margin-left:10px">	
+      </div>
+    </div>
+  </form>
+ 
+  <div id="results">
+  
+	  <table class="table table-hover table-bordered">
+		<thead>
+		  <tr>
+			<th>#</th>
+			<th>Çağrı Tarihi</th>
+			<th>Aranan Numara</th>
+			<th>Arayan ID</th>
+			<th>Cevaplanma</th>
+			<th>Süre (Saniye)</th>
+		  </tr>
+		</thead>
+		<tbody id="tableBody">
+		</tbody>
+		</table>
+	</div> 
+  
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Çağrı Detayı</h4>
+        </div>
+        <div class="modal-body">
+		
+		<table id="modelTable" class="table table-striped" width="100%">
+		<tbody id="modalTBody">
+		</tbody>
+		</table>		
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+</body>
+</html>
